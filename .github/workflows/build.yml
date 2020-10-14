@@ -33,6 +33,11 @@ jobs:
 
       - run: python3 build.py
 
+      - name: Turnstyle
+        uses: softprops/turnstyle@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy to Github Pages (Development)
         if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3.7.0-8
@@ -64,10 +69,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Turnstyle
-        uses: softprops/turnstyle@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: git fetch --prune --unshallow
 
       - name: Create Release
