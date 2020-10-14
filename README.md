@@ -37,10 +37,38 @@ The following repositories are provided:
   * `https://bundabrg.github.io/MyServerTemplates/vX.Y.Z` - Each release of templates will have a version number. If you prefer to
   stick to a particular version then replace `X.Y.Z` with the release version
 
-## Features
-
-* Multiple Repositori
-
 ## Quick Start
 
-* Coming
+* Edit your `config.yml` in the [MyServer](https://github.com/bundabrg/Myserver) folder in your plugins folder and add the
+repository of your choice under repositories. You can add more than one if there are other published repositories.
+
+Example
+```
+# Don't touch
+version: 1
+
+folder:
+  # Template folder
+  templates: templates
+
+  # Cache folder
+  cache: cache
+  
+  # Instances folder
+  instances: instances
+
+# Template Repositories
+repositories:
+  - https://bundabrg.github.io/MyServerTemplates/stable
+
+# Server Config
+bungeecord:
+  ip-listen: 127.0.0.1
+
+  # Start of Dynamic Ports
+  port-start: 26000
+
+  # How many ports to reserve
+  port-amount: 1000
+
+```
