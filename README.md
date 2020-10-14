@@ -1,4 +1,4 @@
-![Logo](https://bundabrg.github.io/MyServerTemplatesTemplates/img/title.png)
+# MyServerTemplates
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![GitHub release](https://img.shields.io/github/release/Bundabrg/MyServerTemplates)](https://GitHub.com/Bundabrg/MyServerTemplates/releases/)
@@ -22,11 +22,24 @@
 
 ---
 
-MyServerTemplates - Official Template Repository for MyServer
+[MyServer](https://github.com/bundabrg/Myserver) is a server management tool that allows both administrators and
+users to create and manage servers under Bungeecord. The definitions of these servers are provided by template files
+which can be pulled from a hosted repository.
+
+This is the official repository of MyServer though you can easily fork it and host your own copies. Templates must be
+built into a repository format which the `build.py` script provides.
+
+The following repositories are provided:
+  * [https://bundabrg.github.io/MyServerTemplates/stable](https://bundabrg.github.io/MyServerTemplates/stable) - This will 
+  always point to the latest stable release and should generally be safe to use
+  * [https://bundabrg.github.io/MyServerTemplates/development](https://bundabrg.github.io/MyServerTemplates/development) - 
+  This will always point to the current development templates for those who like to live on the edge
+  * `https://bundabrg.github.io/MyServerTemplates/vX.Y.Z` - Each release of templates will have a version number. If you prefer to
+  stick to a particular version then replace `X.Y.Z` with the release version
 
 ## Features
 
-* Coming
+* Multiple Repositori
 
 ## Quick Start
 
