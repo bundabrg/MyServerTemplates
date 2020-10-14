@@ -63,6 +63,9 @@ jobs:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+
       - name: Create Release
         # The since last release string will retrieve all commits since the last tag, else if none is found
         # it will return from the start of history, then pretty it up to show single line logs for each entry
