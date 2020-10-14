@@ -1,0 +1,33 @@
+Building The Repository
+-----------------------
+
+/Release
+    - json, small, with summary of repo
+{
+    "version": VersionOfReleaseType,
+    "contents": sha256 of Contents.gz
+}
+
+
+
+/Contents.gz
+    - compressed json with the contents of the repo
+{
+    "version": VersionOfContents,
+    "contents": {
+        "server/vanilla/1.0:vanilla-1.16.3": {
+            "1.0.0": "sha256-of-file",
+            "1.0.1": "sha256-of-file"
+        }
+    }
+}
+
+
+/contents/
+    - Compressed Files, one for each template, sha256 name.gz
+
+
+
+
+
+server/vanilla/1.0:vanilla-1.16.3@1.0.0

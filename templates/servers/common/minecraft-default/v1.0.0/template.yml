@@ -1,13 +1,13 @@
-# MyServer Abstract Template File
+# Minecraft Default Settings
 
 # Template Name
-name: def/server/vanilla/1.0
+name: abstract:server/common/minecraft-default@v1.0.0
 
 # Server Settings
 server:
   start:
     # How to execute the server
-    execute: java -Xms{{JAVA_MEMORY}}G -Xmx{{JAVA_MEMORY}}G -Dmcname={{MC_SERVER_NAME}} -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar {{EXECUTABLE}} nogui
+    execute: java  -jar {{EXECUTABLE}} nogui
 
     # What commands to send to server after execution
     commands: [ ]
@@ -23,14 +23,11 @@ server:
     # How long in seconds to wait for shutdown otherwise the server is murdered
     wait: 60
 
-# Vanilla Settings
-vanilla: { }
-
 # Description of all Tags in Template
 tags:
   # Memory for Java executable
   JAVA_MEMORY:
-    description: "Memory allocated to Server (GB)"
+    description: "Memory allocated to Server"
     required: true
     default: 1
     type: int
@@ -301,11 +298,3 @@ templates:
   dynamic:
     - eula.txt
     - server.properties
-
-# Triggers are performed when text is received that match a trigger. The command is sent to the console of the server. Tags can
-# be used as well
-triggers:
-  notify_join:
-    match: 'UUID of player (\w+)'
-    commands:
-      - 'tellraw $1 ["",{"text":"Welcome to "},{"text":"{{MC_SERVER_NAME}}","color":"red"}]'

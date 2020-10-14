@@ -1,6 +1,6 @@
 # Build folder
-/build
+build/
 
 # IntelliJ
 .idea/*
-!.idea/copyright
+#!.idea/copyright
