@@ -22,6 +22,7 @@
 import gzip
 import hashlib
 import json
+import re
 import shutil
 import tarfile
 from pathlib import Path
@@ -49,13 +50,12 @@ for template_file_path in Path("templates").rglob("template.yml"):
 
         # Make sure its in the right format
         fullname: str = template.get("name")
-        name_split = fullname.rsplit("@", 1)
-        if len(name_split) != 2:
-            print("Template has incorrect naming format: " + str(name[0]))
-            continue
-        name, version = name_split
+        try:
+            template_type, template_name, template_version = re.match(r"([^:]+):([^@]+)@(.+)", fullname).groups()
+        except ValueError:
+            print("Template name is incorrectly formatted: " + fullname)
 
-        print("Found: " + template.get("name") + " in " + str(template_file_path))
+        print("Found: " + fullname + " in " + str(template_file_path))
 
         # Compress folder to base64 encoded file
         temp_path = content_path / "~TMP.tgz"
@@ -71,10 +71,13 @@ for template_file_path in Path("templates").rglob("template.yml"):
         # Rename file
         temp_path.rename(content_path / (sha256_hash.hexdigest() + ".tgz"))
 
-        if name not in templates:
-            templates[name] = {}
+        if template_type not in templates:
+            templates[template_type] = {}
 
-        templates[name][version] = sha256_hash.hexdigest()
+        if template_name not in templates.get(template_type):
+            templates.get(template_type)[template_name] = {}
+
+        templates.get(template_type).get(template_name)[template_version] = sha256_hash.hexdigest()
 
 # Create contents.gz
 contents_file = build_path / "contents.gz"
